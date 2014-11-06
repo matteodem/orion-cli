@@ -20,8 +20,8 @@
   "homepage": "https://github.com/matteodem",
   "dependencies": {
     "nomnom": "1.8.0",
-    "github": "0.1.12",
     "prompt": "0.2.12",
-    "sugar": "1.4.1"
+    "sugar": "1.4.1",
+    "transfer-github": "^0.2.0"
   }
 }
