@@ -1,0 +1,27 @@
+{
+  "name": "orion-cli",
+  "version": "0.0.1",
+  "description": "Console scaffolding and development tool for Meteor Projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matteodem/orion-cli"
+  },
+  "bin": {
+    "orion": "./bin/orion"
+  },
+  "author": "Matteo De Micheli",
+  "bugs": {
+    "url": "https://github.com/matteodem/orion-cli/issues"
+  },
+  "homepage": "https://github.com/matteodem",
+  "dependencies": {
+    "nomnom": "1.8.0",
+    "github": "0.1.12",
+    "prompt": "0.2.12",
+    "sugar": "1.4.1"
+  }
+}
