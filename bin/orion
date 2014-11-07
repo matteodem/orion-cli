@@ -4,6 +4,6 @@
 
 var fs = require('fs'),
   path = require('path'),
-  lib = path.join(path.dirname(fs.realpathSync(__filename)), '../lib');
+  lib = path.join(path.dirname(fs.realpathSync(__filename)), '..');
 
-require(lib + '/index.js').execute();
+require(lib + '/main.js').execute();

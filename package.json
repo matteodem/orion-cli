@@ -2,7 +2,7 @@
   "name": "orion-cli",
   "version": "0.0.1",
   "description": "Console scaffolding and development tool for Meteor Projects",
-  "main": "index.js",
+  "main": "notExistant.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/matteodem",
   "dependencies": {
+    "colors": "^1.0.3",
+    "fs-extra": "^0.12.0",
     "nomnom": "1.8.0",
     "prompt": "0.2.12",
     "sugar": "1.4.1",
