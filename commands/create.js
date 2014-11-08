@@ -37,7 +37,8 @@ module.exports = function (opts) {
 
     if (opts.blank) {
       require('./reset')({
-        pwd: appPath
+        pwd: appPath,
+        force: true
       });
     }
 
