@@ -46,7 +46,7 @@ structure.
     "generate" : {
         "templateName" : {
             "default" : {
-                "desc" : "description for template"
+                "desc" : "description for template",
                 "files" : ["private/templates/someFile.html"],
                 "variables" : [
                     {
@@ -55,8 +55,8 @@ structure.
                     }
                 ]
             },
-            "otherProfileNames" : {
-                ...
+            "otherProfileName" : {
+                "files" : ["private/templates/someOtherFile.html"]
             }
         }
     }
@@ -68,7 +68,7 @@ The template file also has one required line of configuration, which looks like 
 ```html
 <!-- { "path" : "client/views/__templateVar__.html" } -->
 <template name="__templateVar__">
-    <h1> This is the content</h1>
+    <h1>This is the content</h1>
 <template>
 ```
 
