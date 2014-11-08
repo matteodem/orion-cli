@@ -35,6 +35,7 @@ orion init
 Initialize Meteor Apps for use with scaffolding with following command.
 
 ```bash
+cd existingMeteorApp
 orion init
 ```
 
