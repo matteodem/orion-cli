@@ -15,10 +15,10 @@ exports.execute = function () {
       flag: true,
       help: "Create a blank app without any example code"
     })
-    .option('profile', {
+    /*.option('profile', {
       abbr: 'p',
       help: "Choose between default (javascript), es6 (harmony) or coffee (coffeescript) profiles"
-    })
+    }) */
     .callback(require('./commands/create'))
     .help('Creates a new app with the Meteor Boilerplate')
   ;

@@ -159,7 +159,7 @@
       "remove" : [
         "models", "client/modules",
         "client/stylesheets/home.less", "client/stylesheets/header.less",
-        "client/stylesheets/main.less", "client/views", "routes"
+        "client/stylesheets/main.less", "client/views", "routes", "client/config/router.js"
       ],
       "files" : [
         "private/templates/reset/home.html",

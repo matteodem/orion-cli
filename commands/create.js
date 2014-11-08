@@ -1,10 +1,11 @@
 var fs = require('fs'),
   colors = require('colors'),
+  res = require('path').resolve,
   github = require('transfer-github');
 
 // TODO: options! (blank)
 module.exports = function (opts) {
-  var appPath = process.env.PWD + '/' + opts.name;
+  var appPath = res(process.env.PWD, opts.name);
 
   if (fs.existsSync(appPath)) {
     console.error("Directory already exists! Remove it or change the app name".red);
@@ -33,6 +34,13 @@ module.exports = function (opts) {
     clearInterval(interval);
     process.stdout.clearLine();
     process.stdout.cursorTo(0);
+
+    if (opts.blank) {
+      require('./reset')({
+        pwd: appPath
+      });
+    }
+
     console.log('Succesfully created your app!');
     console.log('');
     console.log('    cd ' + opts.name);

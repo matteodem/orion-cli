@@ -1,13 +1,14 @@
 var fs = require('fs-extra'),
-  pwd = process.env.PWD,
   path = require('path'),
   colors = require('colors'),
   prompt = require('prompt'),
   FileManager = require('../lib/fileManager');
 
 module.exports = function (opts) {
-  var res = path.resolve;
+  var res = path.resolve,
+    pwd = opts.pwd || process.env.PWD;
 
+  console.log(pwd);
   if (!fs.existsSync(res(pwd, '.meteor'))) {
     console.error("Run 'set-profile' within your Meteor App!".red);
     process.exit(1);
