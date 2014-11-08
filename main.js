@@ -39,8 +39,17 @@ exports.execute = function () {
     .help('Scaffolds templates (execute from within the app)')
   ;
 
-  // TODO: profile change
-  // TODO: mup init with downloading package bla
+  // Reset command
+  parser.command('reset')
+    .callback(require('./commands/reset'))
+    .help('Reset files in the app (execute from within the app)')
+  ;
+
+  // Set Profile command
+  parser.command('set-profile')
+    .callback(require('./commands/setProfile.js'))
+    .help('Set a new scaffolding profile')
+  ;
 
   parser.parse();
 };

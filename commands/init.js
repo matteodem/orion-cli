@@ -7,11 +7,9 @@ module.exports = function (opts) {
   var newSettings,
     res = path.resolve,
     cliSettings = {
-    "orion-cli" : {
-      "currentProfile" : "default",
-      "generateConfig" : "private/generateConfig.json"
-    }
-  };
+      "profile" : "default",
+      "config" : "private/orion-config.json"
+    };
 
   if (!fs.existsSync(pwd + '/.meteor')) {
     console.error("Run 'init' within your Meteor App!".red);
@@ -30,7 +28,7 @@ module.exports = function (opts) {
   console.log('    Initialized settings.json with orion default configuration');
 
   fs.ensureDirSync(pwd + '/private/templates');
-  fs.copySync(res(__dirname, '../init/generateConfig.json'), pwd + '/private/generateConfig.json');
+  fs.copySync(res(__dirname, '../init/orion-config.json'), pwd + '/private/orion-config.json');
   fs.copySync(res(__dirname, '../init/templates'), pwd + '/private/templates');
-  console.log('    Initialized generateConfig.json and scaffolding templates under private/');
+  console.log('    Initialized orion-config.json and scaffolding templates under private/');
 };

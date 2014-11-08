@@ -18,16 +18,16 @@ module.exports = function (opts) {
   try {
     mainSettings = JSON.parse(fs.readFileSync('settings.json', { encoding: 'utf8' }))['orion-cli'];
 
-    if (!mainSettings || !mainSettings.generateConfig) {
+    if (!mainSettings || !mainSettings.config) {
       console.error("Run 'orion init' to use scaffolding".red);
       process.exit(1);
     }
 
     settings = JSON.parse(
-      fs.readFileSync((pwd + '/' + mainSettings.generateConfig).replace(/\/\//g, '/'), { encoding: 'utf8' })
-    );
+      fs.readFileSync((pwd + '/' + mainSettings.config).replace(/\/\//g, '/'), { encoding: 'utf8' })
+    ).generate;
 
-    profile = mainSettings.currentProfile;
+    profile = mainSettings.profile;
   } catch (e) {
     settings = {};
   }
