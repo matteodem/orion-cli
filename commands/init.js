@@ -17,7 +17,9 @@ module.exports = function (opts) {
   }
 
   if (!fs.existsSync(pwd + '/settings.json')) {
-    newSettings = cliSettings;
+    newSettings = {
+      'orion-cli' : cliSettings
+    };
   } else {
     newSettings = JSON.parse(fs.readFileSync((pwd + '/settings.json'), { encoding: 'utf8' }));
     newSettings['orion-cli'] = cliSettings;
