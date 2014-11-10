@@ -58,10 +58,12 @@
     "model" : {
       "default" : {
         "desc" : "Creates a new Mongo.Collection with a Collection2 Schema",
-        "variables" : {
-          "name" : "modelName",
-          "desc" : "What's your model called (Mongo.Collection)?"
-        },
+        "variables" : [
+          {
+            "name" : "modelName",
+            "desc" : "What's your model called (Mongo.Collection)?"
+          }
+        ],
         "files" : [
           "private/templates/js/model.js",
           "private/templates/js/publication.js"
