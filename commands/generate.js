@@ -1,5 +1,5 @@
 var fs = require('fs'),
-  pwd = process.env.PWD,
+  pwd = process.cwd(),
   sugar = require('sugar'),
   prompt = require('prompt'),
   colors = require('colors'),

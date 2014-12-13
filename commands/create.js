@@ -5,7 +5,7 @@ var fs = require('fs'),
 
 // TODO: options! (blank)
 module.exports = function (opts) {
-  var appPath = res(process.env.PWD, opts.name);
+  var appPath = res(process.cwd(), opts.name);
 
   if (fs.existsSync(appPath)) {
     console.error("Directory already exists! Remove it or change the app name".red);

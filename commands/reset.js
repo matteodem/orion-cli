@@ -25,7 +25,7 @@ function resetApp(pwd, settings, cb) {
 }
 
 module.exports = function (opts) {
-  var pwd = opts.pwd || process.env.PWD;
+  var pwd = opts.pwd || process.cwd();
 
   if (!fs.existsSync(res(pwd, '.meteor'))) {
     console.error("Run 'reset' within your Meteor App!".red);

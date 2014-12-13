@@ -6,7 +6,7 @@ var fs = require('fs-extra'),
 
 module.exports = function (opts) {
   var res = path.resolve,
-    pwd = opts.pwd || process.env.PWD;
+    pwd = opts.pwd || process.cwd();
 
   console.log(pwd);
   if (!fs.existsSync(res(pwd, '.meteor'))) {

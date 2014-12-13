@@ -1,5 +1,5 @@
 var fs = require('fs-extra'),
-  pwd = process.env.PWD,
+  pwd = process.cwd(),
   path = require('path'),
   colors = require('colors');
 
