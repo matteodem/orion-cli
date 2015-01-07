@@ -36,7 +36,15 @@ module.exports = function (opts) {
     var firstTemplate = '';
 
     Object.keys(settings).forEach(function (key) {
-      var desc = settings[key][profile].desc || settings[key].default.desc || '';
+      var desc = '';
+
+      if (settings[key]) {
+        if (settings[key][profile] && settings[key][profile].desc) {
+          desc = settings[key][profile].desc;
+        } else if (settings[key].default && settings[key].default.desc) {
+          desc = settings[key].default.desc;
+        }
+      }
 
       if (desc) {
         desc = '\t - ' + desc;
