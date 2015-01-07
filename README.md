@@ -7,7 +7,7 @@ orion-cli
 ## How to install
 
 ```bash
-npm install orion-cli -g
+npm install -g orion-cli
 ```
     
 ## How to use
