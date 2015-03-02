@@ -85,7 +85,7 @@ module.exports = function (opts) {
       process.exit(1);
     }
   
-    result.name = opts.name
+    result.templateName = opts.name
     var files = FileManager.generateTemplates(templateConf, result);
     console.log('\nSuccessfully created following files: ');
     files.forEach(function (file) {
