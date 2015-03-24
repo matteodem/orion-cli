@@ -22,6 +22,12 @@ orion create meteorApp
 orion create -b blankApp
 ```
 
+If you have a proxy, you need to set the ``http_proxy`` variable to access the repository.
+
+```bash
+export http_proxy=http://myproxy.net:myport
+```
+
 ### Reset apps
 
 You can reset the app to remove all the default code.
