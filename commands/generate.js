@@ -77,19 +77,62 @@ module.exports = function (opts) {
     return { name: variable.name, description: variable.desc  };
   });
 
-  prompt.message = "orion";
-  prompt.delimiter = " | ".green;
-  prompt.get(templateConf.variables, function (err, result) {
+  // Get parsed options - entity name & param
+  if ( opts.entity_name
+    || ( opts.entity_name
+      && opts.entity_param ) ) {
+
+    var params = {},
+      entity_map = [
+        'entity_name',
+        'entity_param'
+      ],
+      variable = {};
+
+    // Remove parsed options from prompt queue
+    for ( var n in entity_map ) {
+      if ( entity_map.hasOwnProperty( n )
+        && typeof opts[ entity_map[ n ] ] !== 'undefined' ) {
+        variable = templateConf.variables.shift();
+        params[ variable.name ] = opts[ entity_map[ n ] ];
+      }
+    }
+  }
+
+  // Create templates
+  if ( templateConf.variables.length > 0 ) {
+    // Need prompt
+    prompt.message = "orion";
+    prompt.delimiter = " | ".green;
+    prompt.get(templateConf.variables, function(err, result) {
+      // Extend result with params
+      for ( var n in params ) {
+        if ( params.hasOwnProperty( n ) ) {
+          result[ n ] = params[ n ];
+        }
+      }
+      runTemplateGeneration(err, result);
+    });
+  } else {
+    runTemplateGeneration( null, params);
+  }
+
+  /**
+   * Generate entity with template
+   * @param err
+   * @param result
+   */
+  function runTemplateGeneration(err, result) {
     if (err) {
       console.error(err);
       process.exit(1);
     }
-  
-    result.templateName = opts.name
+
+   result.templateName = opts.name; // Set entity template
     var files = FileManager.generateTemplates(templateConf, result);
     console.log('\nSuccessfully created following files: ');
     files.forEach(function (file) {
       console.log('    ' + file);
     });
-  });
+  }
 };

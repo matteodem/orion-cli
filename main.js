@@ -35,6 +35,14 @@ exports.execute = function () {
       position: 1,
       help: 'Name of templates to generate, see settings.json'
     })
+    .option('entity_name', {
+      position: 2,
+      help: 'Name of entity to generate without prompt'
+    })
+    .option('entity_param', {
+      position: 3,
+      help: 'Additional parameter for entity generation'
+    })
     .callback(require('./commands/generate'))
     .help('Scaffolds templates (execute from within the app)')
   ;
