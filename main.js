@@ -1,7 +1,9 @@
 exports.execute = function () {
   var parser = require('nomnom');
+  var pjson = require('./package.json');
 
-  parser.script('orion');
+  // Get name of binary
+  parser.script( Object.keys( pjson.bin )[0] );
 
   // Create Command
   parser.command('create')
