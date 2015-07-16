@@ -86,8 +86,21 @@ You can use the variables in the template, as long as the json configuration for
 You can create views, routes, models and more in the default configuration or change it and add more templates.
 
 ```bash
+orion generate [entity] [name] [param]
+```
+
+Example:
+
+```bash
 orion generate view
 orion generate routes
+```
+
+Advanced usage:
+
+```bash
+orion generate view name-of-view
+orion generate routes category /category/:id
 ```
 
 ### Change profiles
