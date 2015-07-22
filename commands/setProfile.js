@@ -2,13 +2,13 @@ var fs = require('fs-extra'),
   path = require('path'),
   colors = require('colors'),
   prompt = require('prompt'),
+  execSync = require('child_process').execSync,
   FileManager = require('../lib/fileManager');
 
 module.exports = function (opts) {
   var res = path.resolve,
     pwd = opts.pwd || process.cwd();
 
-  console.log(pwd);
   if (!fs.existsSync(res(pwd, '.meteor'))) {
     console.error("Run 'set-profile' within your Meteor App!".red);
     process.exit(1);
@@ -30,7 +30,17 @@ module.exports = function (opts) {
     if (vars.profile) {
       settings['orion-cli'].profile = vars.profile;
       fs.writeFileSync(res(pwd, 'settings.json'), JSON.stringify(settings, null, 4) + '\n',{ encoding: 'utf8' });
-      console.log('Successfully changed profile to: ' + vars.profile.yellow);
+
+      var config = JSON.parse(
+        fs.readFileSync((pwd + '/' + settings['orion-cli'].config).replace(/\/\//g, '/'), { encoding: 'utf8' })
+      );
+
+      if (config.packages && config.packages[vars.profile]) {
+        console.log(execSync('meteor add ' + config.packages[vars.profile].join(' '), { encoding: 'utf8' }));
+        console.log('Successfully changed profile to: ' + vars.profile.yellow);
+      } else {
+        console.log('Successfully changed profile to: ' + vars.profile.yellow);
+      }
     }
   });
 };
