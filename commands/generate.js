@@ -5,6 +5,14 @@ var fs = require('fs'),
   colors = require('colors'),
   FileManager = require('../lib/fileManager');
 
+function generateFiles(result, templateConf) {
+  var files = FileManager.generateTemplates(templateConf, result);
+  console.log('\nSuccessfully created following files: ');
+  files.forEach(function (file) {
+    console.log('    ' + file);
+  });
+}
+
 module.exports = function (opts) {
   var mainSettings,
     settings,
@@ -57,7 +65,7 @@ module.exports = function (opts) {
       console.log(key.yellow + desc);
     });
 
-    console.log('\n`orion generate ' + firstTemplate + '`' + ' for example')
+    console.log('\n`orion generate ' + firstTemplate + '`' + ' for example');
     process.exit(0);
   }
 
@@ -77,19 +85,41 @@ module.exports = function (opts) {
     return { name: variable.name, description: variable.desc  };
   });
 
-  prompt.message = "orion";
-  prompt.delimiter = " | ".green;
-  prompt.get(templateConf.variables, function (err, result) {
-    if (err) {
-      console.error(err);
+  // Arguments for the view were directly passed (e.g. orion generate view myViewName)
+  if (opts._.length > 2) {
+    opts._.splice(0, 2);
+    var generateArgs = opts._;
+
+    if (templateConf.variables.length !== generateArgs.length) {
+      console.error(
+        'Got wrong count of arguments! '
+        + ('orion generate ' + opts.name + ' ').yellow
+        + templateConf.variables.map(function (a) { return '{' + a.name + '}'; }).join(' ').yellow
+      );
       process.exit(1);
     }
 
-    result.templateName = opts.name;
-    var files = FileManager.generateTemplates(templateConf, result);
-    console.log('\nSuccessfully created following files: ');
-    files.forEach(function (file) {
-      console.log('    ' + file);
+    var values = templateConf.variables.reduce(function (obj, variable) {
+      obj[variable.name] = generateArgs.pop();
+
+      return obj;
+    }, {});
+
+    values.templateName = opts.name;
+
+    generateFiles(values, templateConf);
+  } else {
+    // Start a prompt
+    prompt.message = "orion";
+    prompt.delimiter = " | ".green;
+    prompt.get(templateConf.variables, function (err, values) {
+      if (err) {
+        console.error(err);
+        process.exit(1);
+      }
+
+      values.templateName = opts.name;
+      generateFiles(values, templateConf);
     });
-  });
+  }
 };

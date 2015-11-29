@@ -3,7 +3,6 @@ var fs = require('fs'),
   res = require('path').resolve,
   github = require('transfer-github');
 
-// TODO: options! (blank)
 module.exports = function (opts) {
   var appPath = res(process.cwd(), opts.name);
 
