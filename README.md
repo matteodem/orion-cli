@@ -33,7 +33,7 @@ export http_proxy=http://myproxy.net:myport
 You can reset the app to remove all the default code.
 
 ```bash
-orion init
+orion reset
 ```
 
 ### Initializing exiting apps
