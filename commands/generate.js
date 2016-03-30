@@ -54,8 +54,10 @@ module.exports = function (opts) {
         }
       }
 
-      if (desc) {
+      if (key.length > 7) {
         desc = '\t - ' + desc;
+      } else if (desc) {
+        desc = '\t\t - ' + desc;
       }
 
       if (!firstTemplate) {

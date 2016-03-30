@@ -1,6 +1,6 @@
 {
   "name": "orion-cli",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Console scaffolding and development tool for Meteor Projects",
   "main": "notExistant.js",
   "scripts": {
