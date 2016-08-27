@@ -9,13 +9,13 @@ orion-cli
 ```bash
 npm install -g orion-cli
 ```
-    
+
 ## How to use
 
 ### Creating apps
 
 You can create meteor apps by using __orion create__, which downloads the [Meteor Boilerplate](https://github.com/matteodem/meteor-boilerplate).
-__--blank__ or __-b__ let's you create a blank app (same as calling ```orion init```). 
+__--blank__ or __-b__ let's you create a blank app (same as calling ```orion init```).
 
 ```bash
 orion create meteorApp
@@ -83,16 +83,16 @@ You can use the variables in the template, as long as the json configuration for
 
 ### Generating files
 
-You can create views, routes, models and more in the default configuration or change it and add more templates.
+You can create components, routes, models and more in the default configuration or change it and add more templates.
 
 ```bash
-orion generate view
+orion generate component
 orion generate routes
 ```
 
 ### Change profiles
 
-The default profiles in the configuration are __es6__ and __coffee__, which generates other kind of files. You can also define your own profiles.
+The default profiles in the configuration are __ES2015__ and __coffee__, which generates other kind of files. You can also define your own profiles.
 
 ```bash
 orion set-profile coffee
